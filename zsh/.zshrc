@@ -159,7 +159,7 @@ setopt correctall
 export PATH="$PATH:$HOME/.local/bin"
 
 # Workon HOME for virtualenvs
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=/var/www/.virtualenvs
 
 # Node packages without sudo (in local path)
 
@@ -175,3 +175,6 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Stop zsh to correct aptitude to .aptitude
 alias sudo="nocorrect sudo"
 alias pip-upgrade-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
+
+# added by Pew
+source $(pew shell_config)
