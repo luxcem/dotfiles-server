@@ -1,18 +1,13 @@
 # Theme for oh-my-zsh
 
-# ZSH_THEME_GIT_PROMPT_PREFIX=" git:(%{$fg[red]%}"
-# ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}X%{$reset_color%}"
-# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[green]%}±%{$reset_color%}%{$fg_bold[white]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="[%B$FG[148]±%{$reset_color%}%b "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}]"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✓%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[cyan]%}▴%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg[magenta]%}▾%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[yellow]%}●%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}●%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="$FG[154]✓%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="$FG[229]%B↑%b%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="$FG[163]%B↓%b%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_STAGED="$FG[034]⚫%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="$FG[220]⚫%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="$FG[001]⚫%{$reset_color%}"
 
 bureau_git_branch () {
   ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
@@ -56,7 +51,7 @@ bureau_git_prompt () {
   local _status=$(bureau_git_status)
   local _result=""
   if [[ "${_branch}x" != "x" ]]; then
-    _result="$ZSH_THEME_GIT_PROMPT_PREFIX$_branch"
+    _result="$ZSH_THEME_GIT_PROMPT_PREFIX%B$_branch%b%{$reset_color%}"
     if [[ "${_status}x" != "x" ]]; then
       _result="$_result $_status"
     fi
@@ -74,13 +69,13 @@ virtualenv_prompt () {
 }
 
 if [[ $(whoami) = "root" ]]; then
-  local user_name='%B$FG[032]%n$FG[178]@%B'
+  local user_name='%B$FG[032]%n$FG[178]@%b'
 else
-  local user_name='%B$FG[009]%n$FG[178]@%B'
+  local user_name='%B$FG[009]%n$FG[178]@%b'
 fi
 
 local host_name='%{$fg_bold[white]%}%m:'
-local dir_name='%B$FG[045]%~%B'
+local dir_name='%B$FG[045]%~%b'
 # local git_prompt='%{$fg_bold[blue]%}$(git_prompt_info) '
 
 PROMPT="${user_name}${host_name}${dir_name}%{$reset_color%} "'%{$reset_color%}'"
