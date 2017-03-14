@@ -5,11 +5,11 @@
 # ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}X%{$reset_color%}"
 # ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-ZSH_THEME_GIT_PROMPT_PREFIX="[%{$fg_bold[green]%}±%{$reset_color%}%{$fg_bold[white]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[green]%}±%{$reset_color%}%{$fg_bold[white]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}]"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✓%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[cyan]%}▴%{$reset_color%}"
-XZSH_THEME_GIT_PROMPT_BEHIND="%{$fg[magenta]%}▾%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg[magenta]%}▾%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[yellow]%}●%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}●%{$reset_color%}"
@@ -73,12 +73,17 @@ virtualenv_prompt () {
     echo $_result
 }
 
-local user_name='%{$fg_bold[red]%}%n%{$fg_bold[yellow]%}@'
+if [[ $(whoami) = "root" ]]; then
+  local user_name='%B$FG[032]%n$FG[178]@%B'
+else
+  local user_name='%B$FG[009]%n$FG[178]@%B'
+fi
+
 local host_name='%{$fg_bold[white]%}%m:'
-local dir_name='%{$fg_bold[cyan]%}%~'
+local dir_name='%B$FG[045]%~%B'
 # local git_prompt='%{$fg_bold[blue]%}$(git_prompt_info) '
 
 PROMPT="${user_name}${host_name}${dir_name}%{$reset_color%} "'%{$reset_color%}'"
-%B$%b "
+%B%(!.#.$)%b "
 # RPS1="${return_code}"
 RPROMPT='$(virtualenv_prompt) $(bureau_git_prompt)'

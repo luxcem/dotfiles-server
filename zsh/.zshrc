@@ -179,3 +179,7 @@ alias pip-upgrade-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xa
 
 # added by Pew
 source $(pew shell_config)
+
+cless(){
+ LESSOPEN='| source-highlight --failsafe --out-format=esc256 -o STDOUT -i %s 2>/dev/null ' less -R "$@"
+}
