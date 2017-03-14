@@ -14,7 +14,7 @@
 ;; Show line numbers
 (line-number-mode t)
 ;; Hide scroll bar
-(scroll-bar-mode 0)
+;; (scroll-bar-mode 0)
 ;; Prevent the cursor from blinking
 (blink-cursor-mode 0)
 ;; Hide initial messages
