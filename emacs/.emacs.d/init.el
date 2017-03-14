@@ -25,5 +25,5 @@
 ;; Fix git bug
 (setq vc-handled-backends ())
 
-
-
+;; save backup in home dir
+(setq backup-directory-alist `(("." . "~/.saves")))
