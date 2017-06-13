@@ -69,9 +69,9 @@ virtualenv_prompt () {
 }
 
 if [[ $(whoami) = "root" ]]; then
-  local user_name='%B$FG[032]%n$FG[178]@%b'
+  local user_name='%B$FG[093]%n$FG[178]@%b'
 else
-  local user_name='%B$FG[009]%n$FG[178]@%b'
+  local user_name='%B$FG[005]%n$FG[178]@%b'
 fi
 
 local host_name='%{$fg_bold[white]%}%m:'
