@@ -183,3 +183,6 @@ source $(pew shell_config)
 cless(){
  LESSOPEN='| source-highlight --failsafe --out-format=esc256 -o STDOUT -i %s 2>/dev/null ' less -R "$@"
 }
+
+# Make C-P behave exactly like up arrow
+bindkey "^P" up-line-or-search
