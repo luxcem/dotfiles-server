@@ -76,9 +76,7 @@ fi
 
 local host_name='%{$fg_bold[white]%}%m:'
 local dir_name='%B$FG[045]%~%b'
-# local git_prompt='%{$fg_bold[blue]%}$(git_prompt_info) '
 
 PROMPT="${user_name}${host_name}${dir_name}%{$reset_color%} "'%{$reset_color%}'"
 %B%(!.#.$)%b "
-# RPS1="${return_code}"
-RPROMPT='$(virtualenv_prompt) $(bureau_git_prompt)'
+RPROMPT='$(virtualenv_prompt)'
