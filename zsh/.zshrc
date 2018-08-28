@@ -159,26 +159,13 @@ setopt correctall
 # Adds .local/bin to $PATH
 export PATH="$PATH:$HOME/.local/bin"
 
-# Workon HOME for virtualenvs
-export WORKON_HOME=/var/www/.virtualenvs
-
 # Node packages without sudo (in local path)
 
-NPM_PACKAGES="${HOME}/.npm-packages"
-NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-PATH="$NPM_PACKAGES/bin:$PATH"
-
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`e
-# command
-unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
-MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # Stop zsh to correct aptitude to .aptitude
 alias sudo="nocorrect sudo"
 alias pip-upgrade-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
-# added by Pew
-source $(pew shell_config)
 
 cless(){
  LESSOPEN='| source-highlight --failsafe --out-format=esc256 -o STDOUT -i %s 2>/dev/null ' less -R "$@"
@@ -186,3 +173,23 @@ cless(){
 
 # Make C-P behave exactly like up arrow
 bindkey "^P" up-line-or-search
+
+if [[ -a $HOME/.bash_profile ]]; then
+    source $HOME/.bash_profile
+fi
+
+
+# Exemple of what can be found in bash profile.
+
+# NPM_PACKAGES="${HOME}/.npm-packages"
+# NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+# PATH="$NPM_PACKAGES/bin:$PATH"
+
+# # Unset manpath so we can inherit from /etc/manpath via the `manpath`e
+# # command
+# unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
+# MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+# # added by Pew
+# source $(pew shell_config)
+# Workon HOME for virtualenvs
+# export WORKON_HOME=/var/www/.virtualenvs
