@@ -11,7 +11,7 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_CUSTOM=$HOME/.zsh-custom
 ZSH_THEME="luxcem"
-plugins=(git bower supervisor celery debian django npm pip pylint python wd)
+plugins=(git debian wd)
 
 source $ZSH/oh-my-zsh.sh
 
